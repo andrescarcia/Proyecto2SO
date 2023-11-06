@@ -57,24 +57,29 @@ public class Administrator extends Thread{
                     GameCharacter tempZelda = new GameCharacter("ZE", this.idCount);
                     this.idCount++;
                     
+                    checkRQueue();
+                    
                     this.processor.setRoundCount(0);
                 }
                 
-                if(this.processor.getState().equals("Empate")){
-                    tie();
+                        
+                switch(this.processor.getCurrentState()){
+                
+                    case "Empate":
+                        tie();
+                        break;
                     
-                }else if(this.processor.getState().equals("Combate Cancelado")){
-                    cantFight();
-                    
-                }else{
-                    
-                    passStreet();
-                    passZelda();
-                    
-                    
-                }
+                    case "Combace Cancelado":
+                        cantFight();
+                        break;
+                }        
                 
                 
+                passStreet();
+                passZelda();
+                checkRQueue();
+                countCharacter();// recorrer las colas y aumentar el contador de cada personaje.
+                //this.processor.setStreetCharacter(GameCharacter.class.cast(this.street1.delFirst().getData()));
                 
                 mutex.release();
                 sleep(1000);
