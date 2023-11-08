@@ -199,6 +199,7 @@ public class GameCharacter {
                 break;
                 
            /**
+            * 
             * Zero tendra menores limites inferiores de vida, habilidad alta y un mayor rango
             * de velocidad, aun intentan nerfearlo
             */
