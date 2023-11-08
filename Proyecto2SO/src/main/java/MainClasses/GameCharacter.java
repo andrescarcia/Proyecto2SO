@@ -16,7 +16,7 @@ public class GameCharacter {
     private int skill;
     private String[] moveset;
     private int id;
-    private int queueWait;
+    public int queueWait;
     
     
     public GameCharacter(String series, int id){
@@ -26,6 +26,14 @@ public class GameCharacter {
         this.moveset = selectMoves();
         generateStats();
         
+    }
+
+    public void incrementQueueWait() {
+        this.queueWait++;
+    }
+
+    public void resetQueueWait() {
+        this.queueWait = 0;
     }
 
     public void selectName(String series){

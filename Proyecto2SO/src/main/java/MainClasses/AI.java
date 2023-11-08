@@ -14,8 +14,8 @@ import java.util.logging.Logger;
  * @author Sebastián
  */
 public class AI extends Thread{
-    private GameCharacter streetCharacter;
-    private GameCharacter zeldaCharacter;
+    public GameCharacter streetCharacter;
+    public GameCharacter zeldaCharacter;
     private GameCharacter fighter1;
     private GameCharacter fighter2;
     private GameCharacter winner;
@@ -130,14 +130,19 @@ public class AI extends Thread{
         this.winner = null;
     }
 
-   public void tie() throws InterruptedException{
 
-   } 
     
-    public void cantFight() throws InterruptedException{
-        
-    }
-    
+//   public void tie() throws InterruptedException{
+//
+//   } 
+//    
+//    public void cantFight() throws InterruptedException{
+//        
+//    }
+//    
+//    
+//    
+
     public GameCharacter checkFirst(){
         if(this.zeldaCharacter.getAgility() > this.streetCharacter.getAgility()){
             return this.zeldaCharacter;

@@ -129,5 +129,16 @@ public class LinkList {
             return fullList;
             }
     }
-    
+
+    public boolean contains(GameCharacter character) {
+        Node currentNode = this.lFirst;
+        while (currentNode != null) {
+            if (((GameCharacter) currentNode.getData()).getId() == character.getId()) {
+                return true;
+            }
+            currentNode = currentNode.getpNext();
+        }
+        return false;
+    }
+
 }
