@@ -139,4 +139,34 @@ public class LinkList {
         }
         return false;
     }
+    public boolean remove(GameCharacter character) {
+        if (isEmpty()) {
+            return false;
+        }
+        if (((GameCharacter) this.lFirst.getData()).getId() == character.getId()) {
+            this.lFirst = this.lFirst.getpNext();
+            if (this.lFirst == null) {
+                this.lLast = null; // La lista está ahora vacía
+            }
+            this.lSize--;
+            return true;
+        }
+        Node current = this.lFirst;
+        Node previous = null;
+        while (current != null && ((GameCharacter) current.getData()).getId() != character.getId()) {
+            previous = current;
+            current = current.getpNext();
+        }
+        if (current == null) {
+            return false; // El personaje no está en la lista
+        }
+        // Eliminar el nodo actual de la lista
+        previous.setpNext(current.getpNext());
+        if (current == this.lLast) { // Si es el último nodo, actualizar lLast
+            this.lLast = previous;
+        }
+        this.lSize--;
+        return true;
+    }
+
 }

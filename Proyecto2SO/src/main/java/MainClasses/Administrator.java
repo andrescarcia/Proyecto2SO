@@ -48,103 +48,105 @@ public class Administrator extends Thread {
     @Override
     public void run() {
         Random random = new Random();
-        int outcome;
 
         try {
             while (true) {
-
-                mutex.acquire(1);
+                mutex.acquire();
 
                 if (this.processor.getRoundCount() >= 2) {
-
-                    outcome = random.nextInt(100);
-
-                    if (outcome <= 80) {
+                    if (random.nextInt(100) <= 80) {
                         addCharacter("SF");
                         addCharacter("ZE");
-
                         checkRQueue(random);
                     }
-
                     this.processor.setRoundCount(0);
                 }
 
-                switch (this.processor.getCurrentState()) {
-
-                    case "Empate":
-                        tie();
-                        break;
-
-                    case "Combace Cancelado":
-                        cantFight();
-                        break;
-                }
-
-                passStreet();
-                passZelda();
-                checkRQueue(random);
-                //countCharacter();// recorrer las colas y aumentar el contador de cada personaje.
-                //this.processor.setStreetCharacter(GameCharacter.class.cast(this.street1.delFirst().getData()));
+                // ... otros casos y métodos ...
                 // Incrementar la espera de los personajes en cada lista
-                incrementQueueWaitForList(street1, null, streetR); // Para los de street nivel 1
-                incrementQueueWaitForList(street2, street3, null);    // Para los de street nivel 2
-                incrementQueueWaitForList(street3, streetR, null);    // Para los de street nivel 3
+                incrementQueueWaitForList(street1); // Para los de street nivel 1
+                incrementQueueWaitForList(street2); // Para los de street nivel 2
+                incrementQueueWaitForList(street3); // Para los de street nivel 3
+                incrementQueueWaitForList(streetR); // Para los de street refuerzo
 
-                incrementQueueWaitForList(zelda1, null, zeldaR);    // Para los de zelda nivel 1
-                incrementQueueWaitForList(zelda2, zelda3, null);      // Para los de zelda nivel 2
-                incrementQueueWaitForList(zelda3, zeldaR, null);      // Para los de zelda nivel 3
-                
-                incrementQueueWaitForList(streetR, street3, null); // Para los de street refuerzo
-                incrementQueueWaitForList(zeldaR, zelda3, null);   // Para los de zelda refuerzo
+                incrementQueueWaitForList(zelda1);  // Para los de zelda nivel 1
+                incrementQueueWaitForList(zelda2);  // Para los de zelda nivel 2
+                incrementQueueWaitForList(zelda3);  // Para los de zelda nivel 3
+                incrementQueueWaitForList(zeldaR);  // Para los de zelda refuerzo
 
                 mutex.release();
                 sleep(1000);
-
             }
-
         } catch (InterruptedException ex) {
             Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void incrementQueueWaitForList(LinkList currentList, LinkList nextList, LinkList reinforcementList) {
+// Y el método  actualizado 
+    private void incrementQueueWaitForList(LinkList currentList) {
         Node currentNode = currentList.getlFirst();
-        Node previousNode = null;
         while (currentNode != null) {
             GameCharacter character = (GameCharacter) currentNode.getData();
-            character.incrementQueueWait();
-            // Verificar si el contador ha alcanzado 8 y actuar según la cola actual
-            if (character.getQueueWait() >= 8) {
-                if (currentList == this.streetR || currentList == this.zeldaR) {
-                    // Mover a la cola de nivel 3 si está en la cola de refuerzo y ha alcanzado la espera de 8
-                    moveToLevelThree(character, currentList, previousNode, currentNode);
-                } else if (currentList == this.street3 || currentList == this.zelda3) {
-                    // Mover a la cola de refuerzo si es prioridad 3
-                    moveToNextPriority(character, currentList, reinforcementList, previousNode, currentNode);
-                } else if (nextList != null) {
-                    // Mover a la siguiente cola de prioridad si no es la cola de refuerzo y hay una siguiente cola
-                    moveToNextPriority(character, currentList, nextList, previousNode, currentNode);
-                } else {
-                    // Reiniciar el contador si está en la cola de prioridad 2 y no hay cola de refuerzo
-                    character.resetQueueWait();
-                }
-                // Se actualiza previousNode solo si el personaje no fue movido
-                if (currentList.contains(character)) {
-                    previousNode = currentNode;
-                }
-                currentNode = currentNode.getpNext();
+            if (character.getQueueWait() == 7) { // Comprueba antes de incrementar
+                changePriority(character, currentList); // Maneja el cambio de prioridad internamente
             } else {
-                previousNode = currentNode;
-                currentNode = currentNode.getpNext();
+                character.incrementQueueWait(); // Incrementa después de verificar
             }
+            currentNode = currentNode.getpNext();
         }
     }
 
-    private void moveToLevelThree(GameCharacter character, LinkList currentList, Node previousNode, Node currentNode) {
-        // Decide to which level 3 list the character should be moved
-        LinkList levelThreeList = currentList == this.streetR ? this.street3 : this.zelda3;
-        moveToNextPriority(character, currentList, levelThreeList, previousNode, currentNode);
+
+// Nuevo método changePriority
+    private void changePriority(GameCharacter character, LinkList currentList) {
+        // Decide la siguiente acción basándose en currentList y los detalles del personaje
+        if (currentList == street1 || currentList == street2 || currentList == street3) {
+            // Mueve los personajes de SF a la siguiente cola o reinicia su tiempo de espera
+            handleStreetCharacterPriority(character, currentList);
+        } else if (currentList == zelda1 || currentList == zelda2 || currentList == zelda3) {
+            // Mueve los personajes de ZE a la siguiente cola o reinicia su tiempo de espera
+            handleZeldaCharacterPriority(character, currentList);
+        }
     }
+
+// Método para manejar el cambio de prioridad de los personajes de Street Fighter
+    private void handleStreetCharacterPriority(GameCharacter character, LinkList currentList) {
+        if (currentList == street1) {
+            moveToNextList(character, currentList, street2);
+        } else if (currentList == street2) {
+            moveToNextList(character, currentList, street3);
+        } else if (currentList == street3) {
+            moveToNextList(character, currentList, streetR);
+        }
+    }
+
+// Método para manejar el cambio de prioridad de los personajes de Zelda
+    private void handleZeldaCharacterPriority(GameCharacter character, LinkList currentList) {
+        if (currentList == zelda1) {
+            moveToNextList(character, currentList, zelda2);
+        } else if (currentList == zelda2) {
+            moveToNextList(character, currentList, zelda3);
+        } else if (currentList == zelda3) {
+            moveToNextList(character, currentList, zeldaR);
+        }
+    }
+
+// Método para mover un personaje a la siguiente lista (utilizado por los métodos de manejo de prioridad)
+    private void moveToNextList(GameCharacter character, LinkList currentList, LinkList nextList) {
+        // Remueve el personaje de la lista actual
+        currentList.remove(character); // Necesitarás implementar el método remove en LinkList
+        // Reinicia el tiempo de espera en la cola del personaje
+        character.resetQueueWait();
+        // Añade el personaje al final de la siguiente lista
+        nextList.insertEnd(new Node(character));
+    }
+    
+    // Ya no se usa
+//    private void moveToLevelThree(GameCharacter character, LinkList currentList, Node previousNode, Node currentNode) {
+//        // Decide to which level 3 list the character should be moved
+//        LinkList levelThreeList = currentList == this.streetR ? this.street3 : this.zelda3;
+//        moveToNextPriority(character, currentList, levelThreeList, previousNode, currentNode);
+//    }
     private void moveToNextPriority(GameCharacter character, LinkList currentList, LinkList nextList, Node previousNode, Node currentNode) {
         // Remover el personaje de la cola actual
         if (previousNode == null) { // Si es el primer nodo
