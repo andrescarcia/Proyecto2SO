@@ -141,4 +141,38 @@ public class LinkList {
         return false;
     }
 
+    public void remove(GameCharacter character) {
+        //Si esta vacio, no hace nada (realmente se leeria esta linea?)
+        if (isEmpty()) {
+            return;
+            
+            
+        //Si no esta vacio, verifica que caso es
+        }else{
+        
+            //Caso 1: el personaje a eliminar es el primero, solo se usa el metodo delFirst
+            if (((GameCharacter) this.lFirst.getData()).getId() == character.getId()) {
+                this.delFirst();
+            
+            //Caso 2: el personaje a eliminar es el ultimo, se usa el metodo delLast
+            }else if (((GameCharacter) this.lLast.getData()).getId() == character.getId()) {
+                this.delLast();
+                
+            }else{
+            
+                Node current = this.lFirst;
+                Node previous = null;
+                while (current != null && ((GameCharacter) current.getData()).getId() != character.getId()) {
+                    previous = current;
+                    current = current.getpNext();
+                }
+
+                // Eliminar el nodo actual de la lista
+                previous.setpNext(current.getpNext());
+                this.lSize--;
+            }   
+        }
+    }
+
+
 }

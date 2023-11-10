@@ -4,6 +4,11 @@
  */
 package com.mycompany.mavenproject1;
 
+import MainClasses.AI;
+import MainClasses.Administrator;
+import MainClasses.LinkList;
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author AndreScarcia
@@ -15,6 +20,16 @@ public class Main_UI extends javax.swing.JFrame {
      */
     public Main_UI() {
         initComponents();
+        
+        LinkList winners = new LinkList();
+        Semaphore mutex = new Semaphore(1);
+        
+        AI procesor = new AI(mutex, winners);        
+        Administrator admin = new Administrator(procesor, mutex);
+        
+        admin.start();
+        procesor.start();
+        
     }
 
     /**

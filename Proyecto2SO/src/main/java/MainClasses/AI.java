@@ -48,8 +48,13 @@ public class AI extends Thread{
             Random random = new Random();
             int outcome;
 
+            sleep(100);
+            
             while(true){            
-                                
+                        
+                mutex.acquire(1);
+                System.out.println("AI semaforo");
+                
                 if(this.zeldaCharacter != null && this.streetCharacter != null){
 
                     this.currentState = "Procesando...";
@@ -57,12 +62,11 @@ public class AI extends Thread{
                     System.out.println(this.currentState);
                     
                     sleep(1000);
-
-
-                    mutex.acquire(1);
                     
-                    outcome = random.nextInt(101);
-
+                    outcome = random.nextInt(100);
+                    System.out.println(outcome);
+                    
+                    
                     if(outcome < 40){
                         this.currentState = "Decidiendo Ganador...";
                         
@@ -75,12 +79,14 @@ public class AI extends Thread{
                     }else if(outcome < 67){
                         this.currentState = "Empate";
                         
+                        System.out.println(this.currentState);
+                        
                     }else{
                         this.currentState = "Combate cancelado";
+                        System.out.println(this.currentState);
                         
                     }
                     
-                    mutex.release();
 
                 emptyFighters();
                     
@@ -92,6 +98,7 @@ public class AI extends Thread{
                 }
             
             this.roundCount++;
+            mutex.release();
             sleep(1000);
 
             }
@@ -180,19 +187,19 @@ public class AI extends Thread{
             case 0:
                 damage = (this.fighter1.getStrenght());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-                System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
                 
             case 1:
                 damage = (this.fighter1.getSkill() * 75);
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-                System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
                 
             case 2:
                 damage = (this.fighter1.getStrenght() * this.fighter1.getSkill());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-                System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
         
         }
@@ -209,19 +216,19 @@ public class AI extends Thread{
             case 0:
                 damage = (this.fighter2.getStrenght());
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-                System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
                 
             case 1:
                 damage = (this.fighter2.getSkill() * 75);
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-                System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
                 
             case 2:
                 damage = (this.fighter2.getStrenght() * this.fighter2.getSkill());
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-                System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
         
         }
