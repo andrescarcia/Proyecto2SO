@@ -173,6 +173,20 @@ public class LinkList {
             }   
         }
     }
+    public String printList1Line() {
+        if (isEmpty()) {
+            return "La lista esta vacia";
+        } else {
+            StringBuilder builder = new StringBuilder();
+            Node current = this.lFirst;
+            while (current != null) {
+                GameCharacter character = (GameCharacter) current.getData();
+                builder.append(character.getName()).append(",");
+                current = current.getpNext();
+            }
+            return builder.toString().trim(); // trim to remove the last extra space
+        }
+    }
 
 
 }

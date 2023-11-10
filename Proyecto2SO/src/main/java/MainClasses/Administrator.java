@@ -4,10 +4,13 @@
  */
 package MainClasses;
 
+import com.mycompany.mavenproject1.Main_UI;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -30,11 +33,13 @@ public class Administrator extends Thread {
     LinkList zelda2;
     LinkList zelda3;
     LinkList zeldaR;
-
-    public Administrator(AI pro, Semaphore m) {
+    private Main_UI mainUI;
+    
+    public Administrator(AI pro, Semaphore m, Main_UI mainUI) {
         this.processor = pro;
         this.idCount = 0;
         this.mutex = m;
+        this.mainUI = mainUI;
         
         this.street1 = new LinkList();
         this.street2 = new LinkList();
@@ -101,7 +106,16 @@ public class Administrator extends Thread {
 
                 passStreet();
                 passZelda();
-                
+                updateTextPane(street1, mainUI.getCola1_Capcom());
+                updateTextPane(street2, mainUI.getCola2_Capcom());
+                updateTextPane(street3, mainUI.getCola3_Capcom());
+                updateTextPane(streetR, mainUI.getColaR_Capcom());
+
+                updateTextPane(zelda1, mainUI.getCola1_Nintendo());
+                updateTextPane(zelda2, mainUI.getCola2_Nintendo());
+                updateTextPane(zelda3, mainUI.getCola3_Nintendo());
+                updateTextPane(zeldaR, mainUI.getColaR_Nintendo());
+
                 System.out.println("Admin suelta semaforo");
                 mutex.release();
                 sleep(1000);
@@ -112,6 +126,13 @@ public class Administrator extends Thread {
             Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateTextPane(LinkList list, JTextPane textPane) {
+        String listString = list.printList1Line();
+        SwingUtilities.invokeLater(() -> textPane.setText(listString));
+    }
+
+
 
 // Y el método  actualizado 
     private void incrementQueueWaitForList(LinkList currentList) {

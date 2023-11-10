@@ -475,7 +475,11 @@ public class GameCharacter {
     public void setQueueWait(int queueWait) {
         this.queueWait = queueWait;
     }
-    
+//    @Override
+    public String toString() {
+        return "" + this.name + ",";
+    }
+
     
     
 }

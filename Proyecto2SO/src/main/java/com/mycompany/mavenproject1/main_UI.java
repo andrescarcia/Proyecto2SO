@@ -8,6 +8,7 @@ import MainClasses.AI;
 import MainClasses.Administrator;
 import MainClasses.LinkList;
 import java.util.concurrent.Semaphore;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Main_UI extends javax.swing.JFrame {
         Semaphore mutex = new Semaphore(1);
         
         AI procesor = new AI(mutex, winners);        
-        Administrator admin = new Administrator(procesor, mutex);
+        Administrator admin = new Administrator(procesor, mutex,this);
         
         admin.start();
         procesor.start();
@@ -715,6 +716,38 @@ public class Main_UI extends javax.swing.JFrame {
                 new Main_UI().setVisible(true);
             }
         });
+    }
+    
+    public JTextPane getColaR_Capcom() {
+        return ColaR_Capcom;
+    }
+
+    public JTextPane getCola3_Capcom() {
+        return Cola3_Capcom;
+    }
+
+    public JTextPane getCola2_Capcom() {
+        return Cola2_Capcom;
+    }
+
+    public JTextPane getCola1_Capcom() {
+        return Cola1_Capcom;
+    }
+
+    public JTextPane getColaR_Nintendo() {
+        return ColaR_Nintendo;
+    }
+
+    public JTextPane getCola3_Nintendo() {
+        return Cola3_Nintendo;
+    }
+
+    public JTextPane getCola2_Nintendo() {
+        return Cola2_Nintendo;
+    }
+
+    public JTextPane getCola1_Nintendo() {
+        return Cola1_Nintendo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
