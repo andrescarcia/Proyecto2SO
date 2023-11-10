@@ -4,6 +4,8 @@
 
 package com.mycompany.mavenproject1;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author andre
@@ -11,7 +13,12 @@ package com.mycompany.mavenproject1;
 public class Mavenproject1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        Main_UI hola = new Main_UI();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Main_UI ventanaPrincipal = new Main_UI();
+                ventanaPrincipal.setVisible(true);
+            }
+        });
     }
 }
