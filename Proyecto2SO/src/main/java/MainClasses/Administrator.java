@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 
@@ -288,6 +289,11 @@ public class Administrator extends Thread {
             this.processor.setStreetCharacter(GameCharacter.class.cast(this.street1.delFirst().getData()));
         }
         
+        if(this.processor.getStreetCharacter() != null){
+            //mainUI.getstreetIcon().setIcon(new ImageIcon("C:\\Users\\Sebastián\\Documents\\Unimet\\Sistemas operativos\\Proyecto 2\\Proyecto2SO\\src\\main\\java\\" + this.processor.getStreetCharacter().getName() + ".png"));
+            mainUI.getstreetIcon().setIcon(new ImageIcon(getClass().getResource("/imagenes/" + this.processor.getStreetCharacter().getName() + ".png")));
+        }
+        
 
     }
 
@@ -313,6 +319,12 @@ public class Administrator extends Thread {
         } else {
             this.processor.setZeldaCharacter(GameCharacter.class.cast(this.zelda1.delFirst().getData()));
         }
+        
+        if(this.processor.getZeldaCharacter()!= null){
+            //mainUI.getstreetIcon().setIcon(new ImageIcon("C:\\Users\\Sebastián\\Documents\\Unimet\\Sistemas operativos\\Proyecto 2\\Proyecto2SO\\src\\main\\java\\" + this.processor.getStreetCharacter().getName() + ".png"));
+            mainUI.getzeldaIcon().setIcon(new ImageIcon(getClass().getResource("/imagenes/" + this.processor.getZeldaCharacter().getName() + ".png")));
+        }
+        
     }
 
     public void addCharacter(String series) {

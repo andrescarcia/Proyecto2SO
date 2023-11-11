@@ -8,7 +8,9 @@ import MainClasses.AI;
 import MainClasses.Administrator;
 import MainClasses.LinkList;
 import java.util.concurrent.Semaphore;
+import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,8 +27,8 @@ public class Main_UI extends javax.swing.JFrame {
         LinkList winners = new LinkList();
         Semaphore mutex = new Semaphore(1);
         
-        AI procesor = new AI(mutex, winners);        
-        Administrator admin = new Administrator(procesor, mutex,this);
+        AI procesor = new AI(mutex, winners, this);        
+        Administrator admin = new Administrator(procesor, mutex, this);
         
         admin.start();
         procesor.start();
@@ -69,8 +71,10 @@ public class Main_UI extends javax.swing.JFrame {
         Contador_Capcom = new javax.swing.JLabel();
         Ver_Capcom = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        streetIcon = new javax.swing.JPanel();
-        zeldaIcon = new javax.swing.JPanel();
+        streetPanel = new javax.swing.JPanel();
+        streetIcon = new javax.swing.JLabel();
+        zeldaPanel = new javax.swing.JPanel();
+        zeldaIcon = new javax.swing.JLabel();
         Personaje_Capcom = new javax.swing.JLabel();
         Personaje_Nintendo = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
@@ -282,7 +286,7 @@ public class Main_UI extends javax.swing.JFrame {
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contador_Capcom, javax.swing.GroupLayout.PREFERRED_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(Contador_Capcom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Ver_Capcom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -311,26 +315,38 @@ public class Main_UI extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 153));
 
-        javax.swing.GroupLayout streetIconLayout = new javax.swing.GroupLayout(streetIcon);
-        streetIcon.setLayout(streetIconLayout);
-        streetIconLayout.setHorizontalGroup(
-            streetIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+        streetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Ryu.png"))); // NOI18N
+        streetIcon.setText("jLabel20");
+
+        javax.swing.GroupLayout streetPanelLayout = new javax.swing.GroupLayout(streetPanel);
+        streetPanel.setLayout(streetPanelLayout);
+        streetPanelLayout.setHorizontalGroup(
+            streetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(streetIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
         );
-        streetIconLayout.setVerticalGroup(
-            streetIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
+        streetPanelLayout.setVerticalGroup(
+            streetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(streetPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(streetIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(107, 107, 107))
         );
 
-        javax.swing.GroupLayout zeldaIconLayout = new javax.swing.GroupLayout(zeldaIcon);
-        zeldaIcon.setLayout(zeldaIconLayout);
-        zeldaIconLayout.setHorizontalGroup(
-            zeldaIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+        zeldaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Link.png"))); // NOI18N
+        zeldaIcon.setText("zeldaIcon");
+
+        javax.swing.GroupLayout zeldaPanelLayout = new javax.swing.GroupLayout(zeldaPanel);
+        zeldaPanel.setLayout(zeldaPanelLayout);
+        zeldaPanelLayout.setHorizontalGroup(
+            zeldaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(zeldaIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
         );
-        zeldaIconLayout.setVerticalGroup(
-            zeldaIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        zeldaPanelLayout.setVerticalGroup(
+            zeldaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zeldaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(zeldaIcon)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Personaje_Capcom.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -373,9 +389,9 @@ public class Main_UI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(streetIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(streetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(zeldaIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(zeldaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -415,10 +431,10 @@ public class Main_UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(streetIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zeldaIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(zeldaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(streetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Personaje_Nintendo)
                     .addComponent(Personaje_Capcom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -607,7 +623,7 @@ public class Main_UI extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contador_Nintendo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(Contador_Nintendo, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Ver_Nintendo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -652,7 +668,7 @@ public class Main_UI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -743,6 +759,22 @@ public class Main_UI extends javax.swing.JFrame {
     public JTextPane getCola1_Nintendo() {
         return Cola1_Nintendo;
     }
+    
+    public JLabel getstreetIcon(){
+        return streetIcon;
+    }
+    
+    public JLabel getzeldaIcon(){
+        return zeldaIcon;
+    }
+    
+    public JLabel getStreetWin(){
+        return Contador_Capcom;
+    }
+    
+    public JLabel getZeldaWin(){
+        return Contador_Nintendo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane Cola1_Capcom;
@@ -804,7 +836,9 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JPanel streetIcon;
-    private javax.swing.JPanel zeldaIcon;
+    private javax.swing.JLabel streetIcon;
+    private javax.swing.JPanel streetPanel;
+    private javax.swing.JLabel zeldaIcon;
+    private javax.swing.JPanel zeldaPanel;
     // End of variables declaration//GEN-END:variables
 }

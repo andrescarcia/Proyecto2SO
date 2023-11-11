@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package MainClasses;
+import com.mycompany.mavenproject1.Main_UI;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -26,7 +27,9 @@ public class AI extends Thread{
     private Semaphore mutex;
     private int roundCount;
     
-    public AI(Semaphore m, LinkList winnersList){
+    private Main_UI mainUI;
+    
+    public AI(Semaphore m, LinkList winnersList, Main_UI mainUI){
         this.streetCharacter = null;
         this.zeldaCharacter = null;
         this.fighter1 = null;
@@ -38,6 +41,7 @@ public class AI extends Thread{
         this.winnersList = winnersList;
         this.mutex = m;
         this.roundCount = 0;
+        this.mainUI = mainUI;
     }
     
     
@@ -173,9 +177,12 @@ public class AI extends Thread{
     
         if(this.winner == this.streetCharacter){
             this.sfWins += 1;
+            this.mainUI.getStreetWin().setText(Integer.toString(this.sfWins));
+            
           
         }else{
             this.zeWins += 1;
+            this.mainUI.getZeldaWin().setText(Integer.toString(this.zeWins));
         }
     
     }
