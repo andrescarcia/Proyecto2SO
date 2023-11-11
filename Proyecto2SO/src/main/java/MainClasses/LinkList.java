@@ -181,7 +181,7 @@ public class LinkList {
             Node current = this.lFirst;
             while (current != null) {
                 GameCharacter character = (GameCharacter) current.getData();
-                builder.append(character.getName()).append(",");
+                builder.append(character.getId()).append(",");
                 current = current.getpNext();
             }
             return builder.toString().trim(); // trim to remove the last extra space

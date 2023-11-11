@@ -67,7 +67,7 @@ public class Administrator extends Thread {
                 
                 sleep(10);
                 mutex.acquire(1);
-                System.out.println("Admin semaforo");
+                System.out.println("Administrador");
 
                 if (this.processor.getRoundCount() >= 2) {
                     if (random.nextInt(100) <= 80) {
@@ -116,7 +116,7 @@ public class Administrator extends Thread {
                 updateTextPane(zelda3, mainUI.getCola3_Nintendo());
                 updateTextPane(zeldaR, mainUI.getColaR_Nintendo());
 
-                System.out.println("Admin suelta semaforo");
+                //System.out.println("Admin suelta semaforo");
                 mutex.release();
                 sleep(1000);
                 
@@ -152,10 +152,10 @@ public class Administrator extends Thread {
 // Nuevo método changePriority
     private void changePriority(GameCharacter character, LinkList currentList) {
         // Decide la siguiente acción basándose en currentList y los detalles del personaje
-        if (currentList == street1 || currentList == street2 || currentList == street3) {
+        if (currentList == street2 || currentList == street3) {
             // Mueve los personajes de SF a la siguiente cola o reinicia su tiempo de espera
             handleStreetCharacterPriority(character, currentList);
-        } else if (currentList == zelda1 || currentList == zelda2 || currentList == zelda3) {
+        } else if (currentList == zelda2 || currentList == zelda3) {
             // Mueve los personajes de ZE a la siguiente cola o reinicia su tiempo de espera
             handleZeldaCharacterPriority(character, currentList);
         }
@@ -163,23 +163,19 @@ public class Administrator extends Thread {
 
 // Método para manejar el cambio de prioridad de los personajes de Street Fighter
     private void handleStreetCharacterPriority(GameCharacter character, LinkList currentList) {
-        if (currentList == street1) {
+        if (currentList == street2) {
+            moveToNextList(character, currentList, street1);
+        }else{
             moveToNextList(character, currentList, street2);
-        } else if (currentList == street2) {
-            moveToNextList(character, currentList, street3);
-        } else if (currentList == street3) {
-            moveToNextList(character, currentList, streetR);
         }
     }
 
 // Método para manejar el cambio de prioridad de los personajes de Zelda
     private void handleZeldaCharacterPriority(GameCharacter character, LinkList currentList) {
-        if (currentList == zelda1) {
-            moveToNextList(character, currentList, zelda2);
-        } else if (currentList == zelda2) {
-            moveToNextList(character, currentList, zelda3);
-        } else if (currentList == zelda3) {
-            moveToNextList(character, currentList, zeldaR);
+        if (currentList == this.zelda2) {
+            moveToNextList(character, currentList, this.zelda1);
+        } else{
+            moveToNextList(character, currentList, this.zelda2);
         }
     }
 
@@ -233,21 +229,10 @@ public class Administrator extends Thread {
     }
 
     private void tie() {
-        // Tomar los personajes que empataron de la instancia processor
-        GameCharacter streetFighter = this.processor.getStreetCharacter();
-        GameCharacter zeldaChar = this.processor.getZeldaCharacter();
-
-        // Crear nodos con estos personajes
-        Node streetNode = new Node(streetFighter);
-        Node zeldaNode = new Node(zeldaChar);
 
         // Volver a poner ambos personajes en la última posición de sus respectivas colas de nivel 1
-        if (streetFighter != null) {
-            this.street1.insertEnd(streetNode);
-        }
-        if (zeldaChar != null) {
-            this.zelda1.insertEnd(zeldaNode);
-        }
+        this.street1.insertEnd(new Node(this.processor.getStreetCharacter()));
+        this.zelda1.insertEnd(new Node(this.processor.getZeldaCharacter()));
 
         // Reiniciar los personajes en la instancia processor
         this.processor.setStreetCharacter(null);
@@ -255,22 +240,10 @@ public class Administrator extends Thread {
     }
 
     public void cantFight() {
-        // Tomar los personajes que no pueden pelear de la instancia processor
-        GameCharacter streetFighter = this.processor.getStreetCharacter();
-        GameCharacter zeldaChar = this.processor.getZeldaCharacter();
-
-        // Crear nodos con estos personajes
-        Node streetNode = new Node(streetFighter);
-        Node zeldaNode = new Node(zeldaChar);
-
-        // Poner ambos personajes en la cola de refuerzo
-        if (streetFighter != null) {
-            this.streetR.insertEnd(streetNode);
-        }
-        if (zeldaChar != null) {
-            this.zeldaR.insertEnd(zeldaNode);
-        }
-
+        
+        this.streetR.insertEnd(new Node(this.processor.getStreetCharacter()));
+        this.zeldaR.insertEnd(new Node(this.processor.getZeldaCharacter()));
+        
         // Reiniciar los personajes en la instancia processor
         this.processor.setStreetCharacter(null);
         this.processor.setZeldaCharacter(null);
@@ -282,8 +255,11 @@ public class Administrator extends Thread {
             int outcome = random.nextInt(100);
 
             if (outcome <= 40) {
-                this.street1.insertEnd(this.streetR.delFirst());
-                this.zelda1.insertEnd(this.zeldaR.delFirst());
+                GameCharacter tempStreet = GameCharacter.class.cast(this.streetR.delFirst().getData());
+                GameCharacter tempZelda = GameCharacter.class.cast(this.zeldaR.delFirst().getData());
+                
+                this.street1.insertEnd(new Node(tempStreet));
+                this.zelda1.insertEnd(new Node(tempZelda));
             }
 
         }
@@ -311,6 +287,7 @@ public class Administrator extends Thread {
         } else {
             this.processor.setStreetCharacter(GameCharacter.class.cast(this.street1.delFirst().getData()));
         }
+        
 
     }
 

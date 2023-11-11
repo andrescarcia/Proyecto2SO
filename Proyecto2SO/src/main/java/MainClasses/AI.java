@@ -48,29 +48,29 @@ public class AI extends Thread{
             Random random = new Random();
             int outcome;
 
-            sleep(100);
+            sleep(20);
             
             while(true){            
                         
                 mutex.acquire(1);
-                System.out.println("AI semaforo");
+                System.out.println("IA");
                 
                 if(this.zeldaCharacter != null && this.streetCharacter != null){
 
                     this.currentState = "Procesando...";
                     
-                    System.out.println(this.currentState);
+                    //System.out.println(this.currentState);
                     
                     sleep(1000);
                     
                     outcome = random.nextInt(100);
-                    System.out.println(outcome);
+                    //System.out.println(outcome);
                     
                     
                     if(outcome < 40){
                         this.currentState = "Decidiendo Ganador...";
                         
-                        System.out.println(this.currentState);
+                        //System.out.println(this.currentState);
                         
                         fight();
                         
@@ -79,11 +79,11 @@ public class AI extends Thread{
                     }else if(outcome < 67){
                         this.currentState = "Empate";
                         
-                        System.out.println(this.currentState);
+                        //System.out.println(this.currentState);
                         
                     }else{
                         this.currentState = "Combate cancelado";
-                        System.out.println(this.currentState);
+                        //System.out.println(this.currentState);
                         
                     }
                     
@@ -93,7 +93,7 @@ public class AI extends Thread{
                }else{
                     this.currentState = "Esperando";
                     
-                    System.out.println(this.currentState);
+                    //System.out.println(this.currentState);
                     
                 }
             
@@ -110,8 +110,11 @@ public class AI extends Thread{
     public void fight() throws InterruptedException{
         this.fighter1 = checkFirst();
         this.fighter2 = checkLast();
-        System.out.println(this.fighter1.getName());
-        System.out.println(this.fighter2.getName());
+        //System.out.println(this.fighter1.getName());
+        //System.out.println(this.fighter2.getName());
+        
+        //System.out.println("vida1:" + this.fighter1.getHealth());
+        //System.out.println("vida2: " + this.fighter2.getHealth());
         
         while(this.fighter1.getHealth() > 0 && this.fighter2.getHealth() > 0){
             fighter1Turn();
@@ -131,7 +134,7 @@ public class AI extends Thread{
             sleep(1000);
         }
         
-        System.out.println("Gana " + this.winner.getName() + "\n");
+        //System.out.println("Gana " + this.winner.getName() + "\n");
         this.winnersList.insertEnd(new Node(this.winner));
         checkWinner();
         this.winner = null;
