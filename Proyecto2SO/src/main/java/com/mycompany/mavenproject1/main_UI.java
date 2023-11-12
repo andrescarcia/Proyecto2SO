@@ -75,8 +75,8 @@ public class Main_UI extends javax.swing.JFrame {
         streetIcon = new javax.swing.JLabel();
         zeldaPanel = new javax.swing.JPanel();
         zeldaIcon = new javax.swing.JLabel();
-        Personaje_Capcom = new javax.swing.JLabel();
-        Personaje_Nintendo = new javax.swing.JLabel();
+        Personaje_SF = new javax.swing.JLabel();
+        Personaje_Zelda = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
         DuracionDiaTxt = new javax.swing.JTextField();
@@ -349,13 +349,13 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Personaje_Capcom.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Personaje_Capcom.setForeground(new java.awt.Color(255, 255, 255));
-        Personaje_Capcom.setText("Personaje 1");
+        Personaje_SF.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Personaje_SF.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_SF.setText("Personaje 1");
 
-        Personaje_Nintendo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Personaje_Nintendo.setForeground(new java.awt.Color(255, 255, 255));
-        Personaje_Nintendo.setText("Personaje 2");
+        Personaje_Zelda.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Personaje_Zelda.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_Zelda.setText("Personaje 2");
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,15 +399,11 @@ public class Main_UI extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addComponent(Personaje_Capcom)
+                                .addComponent(Personaje_SF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Personaje_Nintendo)))
+                                .addComponent(Personaje_Zelda)))
                         .addGap(40, 40, 40)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Estado_CPU)
-                .addGap(128, 128, 128))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -422,6 +418,10 @@ public class Main_UI extends javax.swing.JFrame {
                         .addGap(141, 141, 141)
                         .addComponent(jLabel19)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Estado_CPU, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,8 +436,8 @@ public class Main_UI extends javax.swing.JFrame {
                     .addComponent(streetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Personaje_Nintendo)
-                    .addComponent(Personaje_Capcom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Personaje_Zelda)
+                    .addComponent(Personaje_SF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(15, 15, 15)
                 .addComponent(Estado_CPU, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -775,6 +775,26 @@ public class Main_UI extends javax.swing.JFrame {
     public JLabel getZeldaWin(){
         return Contador_Nintendo;
     }
+    public JLabel getEstadoCPU() {
+        return Estado_CPU;
+    }
+    
+    public JLabel getPersonajeSFLabel() {
+        return Personaje_SF; 
+    }
+
+    public void setPersonajeSFLabel(String text) {
+        Personaje_SF.setText(text);
+    }
+
+    public JLabel getPersonajeZeldaLabel() {
+        return Personaje_Zelda; 
+    }
+
+    public void setPersonajeZeldaLabel(String text) {
+        Personaje_Zelda.setText(text);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane Cola1_Capcom;
@@ -789,8 +809,8 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JLabel Contador_Nintendo;
     private javax.swing.JTextField DuracionDiaTxt;
     private javax.swing.JLabel Estado_CPU;
-    private javax.swing.JLabel Personaje_Capcom;
-    private javax.swing.JLabel Personaje_Nintendo;
+    private javax.swing.JLabel Personaje_SF;
+    private javax.swing.JLabel Personaje_Zelda;
     private javax.swing.JButton Ver_Capcom;
     private javax.swing.JButton Ver_Nintendo;
     private javax.swing.Box.Filler filler1;

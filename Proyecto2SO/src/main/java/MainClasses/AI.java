@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 
 
 /**
@@ -26,10 +27,10 @@ public class AI extends Thread{
     private LinkList winnersList;
     private Semaphore mutex;
     private int roundCount;
-    
+
     private Main_UI mainUI;
-    
-    public AI(Semaphore m, LinkList winnersList, Main_UI mainUI){
+
+    public AI(Semaphore m, LinkList winnersList, Main_UI mainUI) {
         this.streetCharacter = null;
         this.zeldaCharacter = null;
         this.fighter1 = null;
@@ -43,60 +44,59 @@ public class AI extends Thread{
         this.roundCount = 0;
         this.mainUI = mainUI;
     }
-    
-    
+
     @Override
-    public void run(){
-        
-        try{
+    public void run() {
+
+        try {
             Random random = new Random();
             int outcome;
 
             sleep(20);
-            
-            while(true){            
-                        
+
+            while (true) {
+
                 mutex.acquire(1);
                 System.out.println("IA");
-                
-                if(this.zeldaCharacter != null && this.streetCharacter != null){
+
+                if (this.zeldaCharacter != null && this.streetCharacter != null) {
 
                     this.currentState = "Procesando...";
-                    
+                    setCurrentState(currentState);
                     //System.out.println(this.currentState);
-                    
+
                     sleep(1000);
-                    
+
                     outcome = random.nextInt(100);
                     //System.out.println(outcome);
-                    
-                    
-                    if(outcome < 40){
+
+                    if (outcome < 40) {
                         this.currentState = "Decidiendo Ganador...";
-                        
+                        setCurrentState(currentState);
                         //System.out.println(this.currentState);
-                        
+
                         fight();
-                        
+
                         this.currentState = "Combate finalizado";
 
-                    }else if(outcome < 67){
+                    } else if (outcome < 67) {
                         this.currentState = "Empate";
-                        
+                        setCurrentState(currentState);
                         //System.out.println(this.currentState);
-                        
-                    }else{
+
+                    } else {
                         this.currentState = "Combate cancelado";
+                        setCurrentState(currentState);
                         //System.out.println(this.currentState);
-                        
+
                     }
-                    
+
 
                 emptyFighters();
                     
                }else{
                     this.currentState = "Esperando";
-                    
+                    setCurrentState(currentState);
                     //System.out.println(this.currentState);
                     
                 }
@@ -114,6 +114,8 @@ public class AI extends Thread{
     public void fight() throws InterruptedException{
         this.fighter1 = checkFirst();
         this.fighter2 = checkLast();
+        setZeldaCharacter(zeldaCharacter);
+        setStreetCharacter(streetCharacter);
         //System.out.println(this.fighter1.getName());
         //System.out.println(this.fighter2.getName());
         
@@ -187,76 +189,83 @@ public class AI extends Thread{
     
     }
     
-    public void fighter1Turn(){
+    public void fighter1Turn() {
         Random random = new Random();
         int damage;
-        
+
         int selectedMove = random.nextInt(3);
-        switch(selectedMove){
-        
+        switch (selectedMove) {
+
             case 0:
                 damage = (this.fighter1.getStrenght());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+                //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
-                
+
             case 1:
                 damage = (this.fighter1.getSkill() * 75);
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+                //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
-                
+
             case 2:
                 damage = (this.fighter1.getStrenght() * this.fighter1.getSkill());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
-            //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
+                //    System.out.println(this.fighter1.getName() + " Usa " + this.fighter1.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter2.getName() + ":" + this.fighter2.getHealth());
                 break;
-        
+
         }
-    
+
     }
-    
-    public void fighter2Turn(){
+
+    public void fighter2Turn() {
         Random random = new Random();
         int damage;
-        
+
         int selectedMove = random.nextInt(3);
-        switch(selectedMove){
-        
+        switch (selectedMove) {
+
             case 0:
                 damage = (this.fighter2.getStrenght());
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+                //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
-                
+
             case 1:
                 damage = (this.fighter2.getSkill() * 75);
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+                //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
-                
+
             case 2:
                 damage = (this.fighter2.getStrenght() * this.fighter2.getSkill());
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
-            //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
+                //    System.out.println(this.fighter2.getName() + " Usa " + this.fighter2.getMoveset()[selectedMove] + " Inflige " + damage + "\nVida restante de " + this.fighter1.getName() + ":" + this.fighter1.getHealth());
                 break;
-        
+
         }
-    
+
     }
 
-    public void emptyFighters(){
+    public void emptyFighters() {
         this.fighter1 = null;
         this.fighter2 = null;
     }
-    
+
     public GameCharacter getStreetCharacter() {
         return streetCharacter;
+
     }
 
     public void setStreetCharacter(GameCharacter streetCharacter) {
         this.streetCharacter = streetCharacter;
+        if (streetCharacter != null) {
+            this.mainUI.setPersonajeSFLabel(streetCharacter.getName());
+        } else {
+            this.mainUI.setPersonajeSFLabel("No asignado"); // O cualquier texto predeterminado
+        }
     }
+
 
     public GameCharacter getZeldaCharacter() {
         return zeldaCharacter;
@@ -264,6 +273,11 @@ public class AI extends Thread{
 
     public void setZeldaCharacter(GameCharacter zeldaCharacter) {
         this.zeldaCharacter = zeldaCharacter;
+        if (zeldaCharacter != null) {
+            this.mainUI.setPersonajeZeldaLabel(zeldaCharacter.getName());
+        } else {
+            this.mainUI.setPersonajeZeldaLabel("No asignado"); // O cualquier texto predeterminado
+        }
     }
 
     public GameCharacter getWinner() {
@@ -280,6 +294,7 @@ public class AI extends Thread{
 
     public void setCurrentState(String currentState) {
         this.currentState = currentState;
+        this.mainUI.getEstadoCPU().setText(currentState);
     }
 
     public GameCharacter getFighter1() {
@@ -313,7 +328,5 @@ public class AI extends Thread{
     public void setRoundCount(int roundCount) {
         this.roundCount = roundCount;
     }
-    
-    
-    
+
 }
