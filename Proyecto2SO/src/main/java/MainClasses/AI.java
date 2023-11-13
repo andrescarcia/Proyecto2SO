@@ -200,11 +200,13 @@ public class AI extends Thread{
                 damage = (this.fighter1.getStrenght());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
                 if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 }
@@ -215,11 +217,13 @@ public class AI extends Thread{
                 damage = (this.fighter1.getSkill() * 75);
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
                 if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 }
@@ -231,11 +235,13 @@ public class AI extends Thread{
                 damage = (this.fighter1.getStrenght() * this.fighter1.getSkill());
                 this.fighter2.setHealth(this.fighter2.getHealth() - damage);
                 if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter1.getMoveset()[selectedMove]);
                 }
@@ -258,12 +264,14 @@ public class AI extends Thread{
                 damage = (this.fighter2.getStrenght());
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
 
-                if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
+                if (this.fighter2 == this.zeldaCharacter) {
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 }
@@ -275,12 +283,14 @@ public class AI extends Thread{
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
 
-                if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
+                if (this.fighter2 == this.zeldaCharacter) {
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 }
@@ -292,12 +302,14 @@ public class AI extends Thread{
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
                 this.fighter1.setHealth(this.fighter1.getHealth() - damage);
 
-                if (this.fighter1 == this.zeldaCharacter) {
-                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
+                if (this.fighter2 == this.zeldaCharacter) {
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
                     this.mainUI.setDamageZelda(" Inflige " + damage);
                     this.mainUI.setTurnZelda(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 } else {
-                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
+                    this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
+                    this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
                     this.mainUI.setDamageSF(" Inflige " + damage);
                     this.mainUI.setTurnSF(" Usa " + this.fighter2.getMoveset()[selectedMove]);
                 }
