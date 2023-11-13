@@ -47,7 +47,7 @@ public class Main_UI extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        PanelSF = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ColaR_Capcom = new javax.swing.JTextPane();
@@ -60,6 +60,7 @@ public class Main_UI extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         Cola1_Capcom = new javax.swing.JTextPane();
+        jLabel25 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -70,7 +71,8 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         Contador_Capcom = new javax.swing.JLabel();
         Ver_Capcom = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        PanelCPU = new javax.swing.JPanel();
         streetPanel = new javax.swing.JPanel();
         streetIcon = new javax.swing.JLabel();
         zeldaPanel = new javax.swing.JPanel();
@@ -84,7 +86,8 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Estado_CPU = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        PanelZelda = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -98,6 +101,7 @@ public class Main_UI extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         Cola1_Nintendo = new javax.swing.JTextPane();
+        jLabel22 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -107,14 +111,18 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         Contador_Nintendo = new javax.swing.JLabel();
         Ver_Nintendo = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(1, 53, 120));
+        PanelSF.setBackground(new java.awt.Color(1, 53, 120));
+        PanelSF.setLayout(null);
 
         jPanel6.setBackground(new java.awt.Color(255, 202, 8));
 
@@ -137,6 +145,9 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        PanelSF.add(jPanel6);
+        jPanel6.setBounds(6, 589, 297, 62);
+
         jPanel15.setBackground(new java.awt.Color(255, 202, 8));
 
         jScrollPane2.setViewportView(Cola3_Capcom);
@@ -157,6 +168,9 @@ public class Main_UI extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        PanelSF.add(jPanel15);
+        jPanel15.setBounds(6, 499, 297, 62);
 
         jPanel16.setBackground(new java.awt.Color(255, 202, 8));
 
@@ -179,6 +193,9 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        PanelSF.add(jPanel16);
+        jPanel16.setBounds(6, 407, 297, 62);
+
         jPanel18.setBackground(new java.awt.Color(255, 202, 8));
 
         jScrollPane5.setViewportView(Cola1_Capcom);
@@ -200,120 +217,75 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        PanelSF.add(jPanel18);
+        jPanel18.setBounds(6, 315, 297, 62);
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/Street_Fighter_old_logo (Custom).png"))); // NOI18N
+        PanelSF.add(jLabel25);
+        jLabel25.setBounds(70, 10, 160, 120);
+
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText(" Andre Scarcia & Sebastian Castillo");
+        PanelSF.add(jLabel5);
+        jLabel5.setBounds(15, 669, 288, 18);
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Colas de personajes");
+        PanelSF.add(jLabel6);
+        jLabel6.setBounds(6, 259, 209, 26);
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cola de Refuerzo");
+        PanelSF.add(jLabel11);
+        jLabel11.setBounds(6, 567, 116, 18);
 
         jLabel12.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cola 3");
+        PanelSF.add(jLabel12);
+        jLabel12.setBounds(6, 475, 56, 18);
 
         jLabel13.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Cola 2");
+        PanelSF.add(jLabel13);
+        jLabel13.setBounds(6, 383, 116, 18);
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Cola 1");
+        PanelSF.add(jLabel14);
+        jLabel14.setBounds(6, 291, 116, 18);
+        PanelSF.add(jLabel16);
+        jLabel16.setBounds(290, 6, 0, 0);
 
         jLabel21.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Contador de Ganadores");
+        PanelSF.add(jLabel21);
+        jLabel21.setBounds(6, 164, 243, 26);
 
         Contador_Capcom.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Contador_Capcom.setForeground(new java.awt.Color(255, 255, 255));
         Contador_Capcom.setText("0");
+        PanelSF.add(Contador_Capcom);
+        Contador_Capcom.setBounds(6, 196, 152, 52);
 
         Ver_Capcom.setText("Ver Ganadores");
+        PanelSF.add(Ver_Capcom);
+        Ver_Capcom.setBounds(195, 216, 95, 31);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(Contador_Capcom, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Ver_Capcom))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel16)))
-                .addGap(19, 19, 19))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contador_Capcom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Ver_Capcom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18))
-        );
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/Japan pixel art gifs - GIFs.gif"))); // NOI18N
+        PanelSF.add(jLabel24);
+        jLabel24.setBounds(-20, 0, 780, 790);
 
-        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.add(PanelSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 309, 705));
+
+        PanelCPU.setBackground(new java.awt.Color(153, 153, 153));
+        PanelCPU.setLayout(null);
 
         streetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Ryu.png"))); // NOI18N
         streetIcon.setText("jLabel20");
@@ -332,6 +304,9 @@ public class Main_UI extends javax.swing.JFrame {
                 .addGap(107, 107, 107))
         );
 
+        PanelCPU.add(streetPanel);
+        streetPanel.setBounds(6, 157, 160, 245);
+
         zeldaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Link.png"))); // NOI18N
         zeldaIcon.setText("zeldaIcon");
 
@@ -349,17 +324,31 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Personaje_SF.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        PanelCPU.add(zeldaPanel);
+        zeldaPanel.setBounds(172, 157, 160, 245);
+
+        Personaje_SF.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         Personaje_SF.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_SF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Personaje_SF.setText("Personaje 1");
+        Personaje_SF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        PanelCPU.add(Personaje_SF);
+        Personaje_SF.setBounds(10, 410, 160, 21);
 
-        Personaje_Zelda.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Personaje_Zelda.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         Personaje_Zelda.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_Zelda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Personaje_Zelda.setText("Personaje 2");
+        PanelCPU.add(Personaje_Zelda);
+        Personaje_Zelda.setBounds(170, 410, 160, 21);
+        PanelCPU.add(jSlider1);
+        jSlider1.setBounds(6, 661, 326, 26);
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Editar la velocidad de la simulacion");
+        PanelCPU.add(jLabel3);
+        jLabel3.setBounds(30, 590, 290, 28);
 
         DuracionDiaTxt.setText("Duracion");
         DuracionDiaTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -367,99 +356,49 @@ public class Main_UI extends javax.swing.JFrame {
                 DuracionDiaTxtActionPerformed(evt);
             }
         });
+        PanelCPU.add(DuracionDiaTxt);
+        DuracionDiaTxt.setBounds(142, 625, 65, 24);
 
         jLabel15.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Segundos");
+        PanelCPU.add(jLabel15);
+        jLabel15.setBounds(213, 626, 77, 21);
+        PanelCPU.add(jLabel1);
+        jLabel1.setBounds(74, 38, 0, 101);
 
-        Estado_CPU.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Estado_CPU.setForeground(new java.awt.Color(255, 255, 255));
+        Estado_CPU.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        Estado_CPU.setForeground(new java.awt.Color(255, 102, 51));
+        Estado_CPU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Estado_CPU.setText("ESTADO CPU");
+        PanelCPU.add(Estado_CPU);
+        Estado_CPU.setBounds(10, 70, 320, 28);
 
-        jLabel19.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Arial Black", 3, 48)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 102, 51));
         jLabel19.setText("CPU");
+        PanelCPU.add(jLabel19);
+        jLabel19.setBounds(109, 6, 140, 60);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(streetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(zeldaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(Personaje_SF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Personaje_Zelda)))
-                        .addGap(40, 40, 40)))
-                .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(DuracionDiaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel19)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Estado_CPU, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(zeldaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(streetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Personaje_Zelda)
-                    .addComponent(Personaje_SF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addComponent(Estado_CPU, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DuracionDiaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(12, 12, 12)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/izk7j4s2tmh71.gif"))); // NOI18N
+        PanelCPU.add(jLabel20);
+        jLabel20.setBounds(-350, 0, 1050, 1170);
 
-        jPanel8.setBackground(new java.awt.Color(179, 0, 14));
-        jPanel8.setPreferredSize(new java.awt.Dimension(309, 594));
+        jPanel1.add(PanelCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 6, 338, 705));
+
+        PanelZelda.setBackground(new java.awt.Color(179, 0, 14));
+        PanelZelda.setPreferredSize(new java.awt.Dimension(309, 594));
+        PanelZelda.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(102, 0, 0));
         jLabel2.setText("Cola de Refuerzo");
+        PanelZelda.add(jLabel2);
+        jLabel2.setBounds(6, 568, 116, 18);
 
-        jPanel19.setBackground(new java.awt.Color(143, 143, 143));
+        jPanel19.setBackground(new java.awt.Color(153, 0, 0));
 
+        jScrollPane6.setBackground(new java.awt.Color(153, 0, 0));
         jScrollPane6.setViewportView(ColaR_Nintendo);
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -479,7 +418,10 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel20.setBackground(new java.awt.Color(143, 143, 143));
+        PanelZelda.add(jPanel19);
+        jPanel19.setBounds(6, 590, 297, 62);
+
+        jPanel20.setBackground(new java.awt.Color(153, 0, 0));
         jPanel20.setForeground(new java.awt.Color(143, 143, 143));
 
         jScrollPane7.setViewportView(Cola3_Nintendo);
@@ -501,7 +443,10 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel21.setBackground(new java.awt.Color(143, 143, 143));
+        PanelZelda.add(jPanel20);
+        jPanel20.setBounds(6, 500, 297, 62);
+
+        jPanel21.setBackground(new java.awt.Color(153, 0, 0));
         jPanel21.setForeground(new java.awt.Color(143, 143, 143));
 
         jScrollPane8.setViewportView(Cola2_Nintendo);
@@ -523,8 +468,11 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel22.setBackground(new java.awt.Color(143, 143, 143));
-        jPanel22.setForeground(new java.awt.Color(143, 143, 143));
+        PanelZelda.add(jPanel21);
+        jPanel21.setBounds(6, 408, 297, 62);
+
+        jPanel22.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel22.setForeground(new java.awt.Color(153, 0, 0));
 
         jScrollPane9.setViewportView(Cola1_Nintendo);
 
@@ -545,145 +493,69 @@ public class Main_UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        PanelZelda.add(jPanel22);
+        jPanel22.setBounds(6, 318, 297, 62);
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/Zelda_Logo.svg (Custom) (1).png"))); // NOI18N
+        PanelZelda.add(jLabel22);
+        jLabel22.setBounds(10, 20, 290, 110);
+
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(102, 0, 0));
         jLabel4.setText(" Unimet 2023 - Sistemas Operativos");
+        PanelZelda.add(jLabel4);
+        jLabel4.setBounds(30, 670, 252, 18);
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(102, 0, 0));
         jLabel7.setText("Contador de Ganadores");
+        PanelZelda.add(jLabel7);
+        jLabel7.setBounds(6, 173, 243, 26);
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(102, 0, 0));
         jLabel8.setText("Cola 2");
+        PanelZelda.add(jLabel8);
+        jLabel8.setBounds(6, 384, 116, 18);
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(102, 0, 0));
         jLabel9.setText("Cola 3");
+        PanelZelda.add(jLabel9);
+        jLabel9.setBounds(6, 476, 56, 18);
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(102, 0, 0));
         jLabel10.setText("Cola 1");
+        PanelZelda.add(jLabel10);
+        jLabel10.setBounds(6, 295, 116, 18);
+        PanelZelda.add(jLabel18);
+        jLabel18.setBounds(287, 6, 0, 64);
 
         jLabel17.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(102, 0, 0));
         jLabel17.setText("Colas de personajes");
+        PanelZelda.add(jLabel17);
+        jLabel17.setBounds(6, 263, 209, 26);
 
         Contador_Nintendo.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        Contador_Nintendo.setForeground(new java.awt.Color(255, 255, 255));
+        Contador_Nintendo.setForeground(new java.awt.Color(102, 0, 0));
         Contador_Nintendo.setText("0");
+        PanelZelda.add(Contador_Nintendo);
+        Contador_Nintendo.setBounds(12, 205, 140, 52);
 
         Ver_Nintendo.setText("Ver Ganadores");
+        PanelZelda.add(Ver_Nintendo);
+        Ver_Nintendo.setBounds(208, 225, 95, 31);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 36, Short.MAX_VALUE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(16, 16, 16))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(Contador_Nintendo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                                        .addComponent(Ver_Nintendo)))))))
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contador_Nintendo, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Ver_Nintendo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addGap(5, 5, 5)
-                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(17, 17, 17))
-        );
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/nintendo-gifs.gif"))); // NOI18N
+        jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        PanelZelda.add(jLabel23);
+        jLabel23.setBounds(-122, -14, 500, 740);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jPanel1.add(PanelZelda, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 6, -1, 705));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 717));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -809,6 +681,9 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JLabel Contador_Nintendo;
     private javax.swing.JTextField DuracionDiaTxt;
     private javax.swing.JLabel Estado_CPU;
+    private javax.swing.JPanel PanelCPU;
+    private javax.swing.JPanel PanelSF;
+    private javax.swing.JPanel PanelZelda;
     private javax.swing.JLabel Personaje_SF;
     private javax.swing.JLabel Personaje_Zelda;
     private javax.swing.JButton Ver_Capcom;
@@ -827,7 +702,12 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -843,10 +723,7 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
