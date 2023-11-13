@@ -116,10 +116,8 @@ public class AI extends Thread{
         this.fighter2 = checkLast();
         setZeldaCharacter(zeldaCharacter);
         setStreetCharacter(streetCharacter);
-        this.mainUI.setVidaZelda("Vida" + ":" + this.fighter2.getHealth());
-        this.mainUI.setVidaSF("Vida" + ":" + this.fighter2.getHealth());
-        this.mainUI.setVidaZelda("Vida" + ":" + this.fighter1.getHealth());
-        this.mainUI.setVidaSF("Vida" + ":" + this.fighter1.getHealth());
+        this.mainUI.setVidaSF(this.streetCharacter.toString());
+        this.mainUI.setVidaZelda(this.zeldaCharacter.toString());
         System.out.println(this.fighter1.getName());
         System.out.println(this.fighter2.getName());
         
@@ -192,7 +190,8 @@ public class AI extends Thread{
     public void fighter1Turn() {
         Random random = new Random();
         int damage;
-
+        this.mainUI.setVidaSF(this.streetCharacter.toString());
+        this.mainUI.setVidaZelda(this.zeldaCharacter.toString());
         int selectedMove = random.nextInt(3);
         switch (selectedMove) {
 
@@ -255,7 +254,8 @@ public class AI extends Thread{
     public void fighter2Turn() {
         Random random = new Random();
         int damage;
-
+        this.mainUI.setVidaSF(this.streetCharacter.toString());
+        this.mainUI.setVidaZelda(this.zeldaCharacter.toString());
         int selectedMove = random.nextInt(3);
         switch (selectedMove) {
             
