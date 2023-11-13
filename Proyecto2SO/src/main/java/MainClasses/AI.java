@@ -27,6 +27,8 @@ public class AI extends Thread{
     private LinkList winnersList;
     private Semaphore mutex;
     private int roundCount;
+    private  int durSeg;
+    
 
     private Main_UI mainUI;
 
@@ -43,6 +45,7 @@ public class AI extends Thread{
         this.mutex = m;
         this.roundCount = 0;
         this.mainUI = mainUI;
+        this.durSeg = 100;
     }
 
     @Override
@@ -64,8 +67,9 @@ public class AI extends Thread{
                     this.currentState = "Procesando...";
                     setCurrentState(currentState);
                     //System.out.println(this.currentState);
-
-                    sleep(1000);
+                    
+                    //Cambiar este sleep
+                    sleep(durSeg * 10);
 
                     outcome = random.nextInt(100);
                     //System.out.println(outcome);
@@ -131,15 +135,17 @@ public class AI extends Thread{
                 this.winner = this.fighter1;
                 break;
             }
-             
-            sleep(1000);
+            
+            //cambiar este sleep
+            sleep(durSeg);
             fighter2Turn();
             
             if(this.fighter1.getHealth() <= 0){
                 this.winner = this.fighter2;
                 break;
             }
-            sleep(1000);
+            //cambiar este sleep
+            sleep(durSeg);
         }
         
         //System.out.println("Gana " + this.winner.getName() + "\n");
@@ -333,7 +339,9 @@ public class AI extends Thread{
     public void setStreetCharacter(GameCharacter streetCharacter) {
         this.streetCharacter = streetCharacter;
         if (streetCharacter != null) {
-            this.mainUI.setPersonajeSFLabel(streetCharacter.getName());
+            this.mainUI.setDamageSF("Fuerza: "+Integer.toString(this.streetCharacter.getStrenght()));
+            this.mainUI.setTurnSF("Agilidad: "+Integer.toString(this.streetCharacter.getAgility()));
+            this.mainUI.setVidaSF("Habilidad: " + Integer.toString(this.streetCharacter.getSkill()));          this.mainUI.setPersonajeSFLabel(streetCharacter.getName());
         } else {
             this.mainUI.setPersonajeSFLabel("No asignado"); // O cualquier texto predeterminado
         }
@@ -347,10 +355,19 @@ public class AI extends Thread{
     public void setZeldaCharacter(GameCharacter zeldaCharacter) {
         this.zeldaCharacter = zeldaCharacter;
         if (zeldaCharacter != null) {
+            this.mainUI.setDamageZelda("Fuerza: "+Integer.toString(this.zeldaCharacter.getStrenght()));
+            this.mainUI.setTurnZelda("Agilidad: "+Integer.toString(this.zeldaCharacter.getAgility()));
+            this.mainUI.setVidaZelda("Habilidad: " + Integer.toString(this.zeldaCharacter.getSkill()));
+
             this.mainUI.setPersonajeZeldaLabel(zeldaCharacter.getName());
         } else {
             this.mainUI.setPersonajeZeldaLabel("No asignado"); // O cualquier texto predeterminado
         }
+    }
+
+
+    public void setDur(int durSegInterf) {
+        this.durSeg = durSegInterf;
     }
 
     public GameCharacter getWinner() {

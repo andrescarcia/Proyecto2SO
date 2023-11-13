@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
  * @author AndreScarcia
  */
 public class Main_UI extends javax.swing.JFrame {
+    private AI procesor;
 
     /**
      * Creates new form main_UI
@@ -27,11 +28,11 @@ public class Main_UI extends javax.swing.JFrame {
         LinkList winners = new LinkList();
         Semaphore mutex = new Semaphore(1);
         
-        AI procesor = new AI(mutex, winners, this);        
+        this.procesor = new AI(mutex, winners, this);        
         Administrator admin = new Administrator(procesor, mutex, this);
         
         admin.start();
-        procesor.start();
+        this.procesor.start();
         
     }
 
@@ -77,9 +78,9 @@ public class Main_UI extends javax.swing.JFrame {
         streetIcon = new javax.swing.JLabel();
         zeldaPanel = new javax.swing.JPanel();
         zeldaIcon = new javax.swing.JLabel();
+        SetTime = new javax.swing.JButton();
         Personaje_SF = new javax.swing.JLabel();
         Personaje_Zelda = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
         DuracionDiaTxt = new javax.swing.JTextField();
         DamageZelda = new javax.swing.JLabel();
@@ -239,13 +240,13 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Colas de personajes");
         PanelSF.add(jLabel6);
-        jLabel6.setBounds(6, 259, 209, 26);
+        jLabel6.setBounds(6, 259, 202, 26);
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cola de Refuerzo");
         PanelSF.add(jLabel11);
-        jLabel11.setBounds(6, 567, 116, 18);
+        jLabel11.setBounds(6, 567, 112, 18);
 
         jLabel12.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -271,7 +272,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Contador de Ganadores");
         PanelSF.add(jLabel21);
-        jLabel21.setBounds(6, 164, 243, 26);
+        jLabel21.setBounds(6, 164, 234, 26);
 
         Contador_Capcom.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Contador_Capcom.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,7 +282,7 @@ public class Main_UI extends javax.swing.JFrame {
 
         Ver_Capcom.setText("Ver Ganadores");
         PanelSF.add(Ver_Capcom);
-        Ver_Capcom.setBounds(195, 216, 95, 31);
+        Ver_Capcom.setBounds(195, 216, 108, 31);
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/Japan pixel art gifs - GIFs.gif"))); // NOI18N
         PanelSF.add(jLabel24);
@@ -333,8 +334,19 @@ public class Main_UI extends javax.swing.JFrame {
         PanelCPU.add(zeldaPanel);
         zeldaPanel.setBounds(172, 157, 160, 245);
 
+        SetTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        SetTime.setForeground(new java.awt.Color(255, 102, 0));
+        SetTime.setText("Aceptar");
+        SetTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetTimeActionPerformed(evt);
+            }
+        });
+        PanelCPU.add(SetTime);
+        SetTime.setBounds(100, 660, 130, 30);
+
         Personaje_SF.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        Personaje_SF.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_SF.setForeground(new java.awt.Color(255, 102, 0));
         Personaje_SF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Personaje_SF.setText("Personaje 1");
         Personaje_SF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -342,71 +354,70 @@ public class Main_UI extends javax.swing.JFrame {
         Personaje_SF.setBounds(10, 410, 160, 21);
 
         Personaje_Zelda.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        Personaje_Zelda.setForeground(new java.awt.Color(255, 255, 255));
+        Personaje_Zelda.setForeground(new java.awt.Color(255, 102, 0));
         Personaje_Zelda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Personaje_Zelda.setText("Personaje 2");
         PanelCPU.add(Personaje_Zelda);
         Personaje_Zelda.setBounds(170, 410, 160, 21);
-        PanelCPU.add(jSlider1);
-        jSlider1.setBounds(6, 661, 326, 26);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 102, 0));
         jLabel3.setText("Editar la velocidad de la simulacion");
         PanelCPU.add(jLabel3);
-        jLabel3.setBounds(30, 590, 290, 28);
+        jLabel3.setBounds(10, 570, 300, 30);
 
-        DuracionDiaTxt.setText("Duracion");
+        DuracionDiaTxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DuracionDiaTxt.setText("1");
         DuracionDiaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DuracionDiaTxtActionPerformed(evt);
             }
         });
         PanelCPU.add(DuracionDiaTxt);
-        DuracionDiaTxt.setBounds(142, 625, 65, 24);
+        DuracionDiaTxt.setBounds(180, 610, 110, 40);
 
-        DamageZelda.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        DamageZelda.setForeground(new java.awt.Color(255, 255, 255));
+        DamageZelda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        DamageZelda.setForeground(new java.awt.Color(255, 102, 0));
         DamageZelda.setText("DamageZ");
         PanelCPU.add(DamageZelda);
-        DamageZelda.setBounds(170, 480, 150, 16);
+        DamageZelda.setBounds(170, 480, 150, 19);
 
-        DamageSF.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        DamageSF.setForeground(new java.awt.Color(255, 255, 255));
+        DamageSF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        DamageSF.setForeground(new java.awt.Color(255, 102, 0));
         DamageSF.setText("DamageSF");
         PanelCPU.add(DamageSF);
-        DamageSF.setBounds(10, 480, 140, 16);
+        DamageSF.setBounds(10, 480, 140, 19);
 
-        VidaZelda.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        VidaZelda.setForeground(new java.awt.Color(255, 255, 255));
+        VidaZelda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        VidaZelda.setForeground(new java.awt.Color(255, 102, 0));
         VidaZelda.setText("VidaZelda");
         PanelCPU.add(VidaZelda);
-        VidaZelda.setBounds(170, 510, 150, 16);
+        VidaZelda.setBounds(170, 510, 150, 19);
 
-        VidaSF.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        VidaSF.setForeground(new java.awt.Color(255, 255, 255));
+        VidaSF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        VidaSF.setForeground(new java.awt.Color(255, 102, 0));
         VidaSF.setText("VidaSF");
         PanelCPU.add(VidaSF);
-        VidaSF.setBounds(10, 510, 140, 16);
+        VidaSF.setBounds(10, 510, 140, 19);
 
         TurnSF.setBackground(new java.awt.Color(255, 255, 255));
-        TurnSF.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        TurnSF.setForeground(new java.awt.Color(255, 255, 255));
+        TurnSF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TurnSF.setForeground(new java.awt.Color(255, 102, 0));
         TurnSF.setText("TurnSF");
         PanelCPU.add(TurnSF);
-        TurnSF.setBounds(10, 440, 150, 40);
+        TurnSF.setBounds(10, 450, 150, 20);
 
-        TurnZelda.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        TurnZelda.setForeground(new java.awt.Color(255, 255, 255));
+        TurnZelda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TurnZelda.setForeground(new java.awt.Color(255, 102, 0));
         TurnZelda.setText("TurnZelda");
         PanelCPU.add(TurnZelda);
-        TurnZelda.setBounds(170, 440, 160, 40);
+        TurnZelda.setBounds(170, 450, 160, 20);
 
-        jLabel15.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Segundos");
+        jLabel15.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel15.setText("Dur Segundos");
         PanelCPU.add(jLabel15);
-        jLabel15.setBounds(213, 626, 77, 21);
+        jLabel15.setBounds(20, 620, 150, 30);
 
         Estado_CPU.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         Estado_CPU.setForeground(new java.awt.Color(255, 102, 51));
@@ -435,7 +446,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 0, 0));
         jLabel2.setText("Cola de Refuerzo");
         PanelZelda.add(jLabel2);
-        jLabel2.setBounds(6, 568, 116, 18);
+        jLabel2.setBounds(6, 568, 112, 18);
 
         jPanel19.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -551,7 +562,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(102, 0, 0));
         jLabel7.setText("Contador de Ganadores");
         PanelZelda.add(jLabel7);
-        jLabel7.setBounds(6, 173, 243, 26);
+        jLabel7.setBounds(6, 173, 234, 26);
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 0, 0));
@@ -577,7 +588,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(102, 0, 0));
         jLabel17.setText("Colas de personajes");
         PanelZelda.add(jLabel17);
-        jLabel17.setBounds(6, 263, 209, 26);
+        jLabel17.setBounds(6, 263, 202, 26);
 
         Contador_Nintendo.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Contador_Nintendo.setForeground(new java.awt.Color(102, 0, 0));
@@ -587,7 +598,7 @@ public class Main_UI extends javax.swing.JFrame {
 
         Ver_Nintendo.setText("Ver Ganadores");
         PanelZelda.add(Ver_Nintendo);
-        Ver_Nintendo.setBounds(208, 225, 95, 31);
+        Ver_Nintendo.setBounds(208, 225, 108, 31);
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/nintendo-gifs.gif"))); // NOI18N
         jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -604,6 +615,13 @@ public class Main_UI extends javax.swing.JFrame {
     private void DuracionDiaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DuracionDiaTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DuracionDiaTxtActionPerformed
+
+    private void SetTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetTimeActionPerformed
+        // TODO add your handling code here:
+        int dur = (Integer.parseInt(this.DuracionDiaTxt.getText()));
+        this.procesor.setDur(dur);
+        
+    }//GEN-LAST:event_SetTimeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -757,6 +775,7 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JPanel PanelZelda;
     private javax.swing.JLabel Personaje_SF;
     private javax.swing.JLabel Personaje_Zelda;
+    private javax.swing.JButton SetTime;
     private javax.swing.JLabel TurnSF;
     private javax.swing.JLabel TurnZelda;
     private javax.swing.JButton Ver_Capcom;
@@ -806,7 +825,6 @@ public class Main_UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel streetIcon;
     private javax.swing.JPanel streetPanel;
     private javax.swing.JLabel zeldaIcon;
