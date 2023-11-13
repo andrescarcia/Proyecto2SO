@@ -11,6 +11,7 @@ import java.util.concurrent.Semaphore;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.swing.ImageIcon;
  */
 public class Main_UI extends javax.swing.JFrame {
     private AI procesor;
-
+    private Ganadores_UI ganadoresUI;
     /**
      * Creates new form main_UI
      */
@@ -26,9 +27,12 @@ public class Main_UI extends javax.swing.JFrame {
         initComponents();
         
         LinkList winners = new LinkList();
+        LinkList winnersSF = new LinkList();
+        LinkList winnersZelda = new LinkList();
         Semaphore mutex = new Semaphore(1);
+        ganadoresUI = new Ganadores_UI();
         
-        this.procesor = new AI(mutex, winners, this);        
+        this.procesor = new AI(mutex, winners,winnersSF,winnersZelda, this, ganadoresUI);        
         Administrator admin = new Administrator(procesor, mutex, this);
         
         admin.start();
@@ -240,13 +244,13 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Colas de personajes");
         PanelSF.add(jLabel6);
-        jLabel6.setBounds(6, 259, 202, 26);
+        jLabel6.setBounds(6, 259, 209, 26);
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cola de Refuerzo");
         PanelSF.add(jLabel11);
-        jLabel11.setBounds(6, 567, 112, 18);
+        jLabel11.setBounds(6, 567, 116, 18);
 
         jLabel12.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,7 +276,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Contador de Ganadores");
         PanelSF.add(jLabel21);
-        jLabel21.setBounds(6, 164, 234, 26);
+        jLabel21.setBounds(6, 164, 243, 26);
 
         Contador_Capcom.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Contador_Capcom.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,9 +284,17 @@ public class Main_UI extends javax.swing.JFrame {
         PanelSF.add(Contador_Capcom);
         Contador_Capcom.setBounds(6, 196, 152, 52);
 
+        Ver_Capcom.setBackground(new java.awt.Color(255, 204, 0));
+        Ver_Capcom.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Ver_Capcom.setForeground(new java.awt.Color(255, 255, 255));
         Ver_Capcom.setText("Ver Ganadores");
+        Ver_Capcom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_CapcomActionPerformed(evt);
+            }
+        });
         PanelSF.add(Ver_Capcom);
-        Ver_Capcom.setBounds(195, 216, 108, 31);
+        Ver_Capcom.setBounds(150, 216, 140, 31);
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/Japan pixel art gifs - GIFs.gif"))); // NOI18N
         PanelSF.add(jLabel24);
@@ -334,8 +346,9 @@ public class Main_UI extends javax.swing.JFrame {
         PanelCPU.add(zeldaPanel);
         zeldaPanel.setBounds(172, 157, 160, 245);
 
+        SetTime.setBackground(new java.awt.Color(255, 102, 0));
         SetTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        SetTime.setForeground(new java.awt.Color(255, 102, 0));
+        SetTime.setForeground(new java.awt.Color(255, 255, 255));
         SetTime.setText("Aceptar");
         SetTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,7 +459,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 0, 0));
         jLabel2.setText("Cola de Refuerzo");
         PanelZelda.add(jLabel2);
-        jLabel2.setBounds(6, 568, 112, 18);
+        jLabel2.setBounds(6, 568, 116, 18);
 
         jPanel19.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -562,7 +575,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(102, 0, 0));
         jLabel7.setText("Contador de Ganadores");
         PanelZelda.add(jLabel7);
-        jLabel7.setBounds(6, 173, 234, 26);
+        jLabel7.setBounds(6, 173, 243, 26);
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 0, 0));
@@ -588,7 +601,7 @@ public class Main_UI extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(102, 0, 0));
         jLabel17.setText("Colas de personajes");
         PanelZelda.add(jLabel17);
-        jLabel17.setBounds(6, 263, 202, 26);
+        jLabel17.setBounds(6, 263, 209, 26);
 
         Contador_Nintendo.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Contador_Nintendo.setForeground(new java.awt.Color(102, 0, 0));
@@ -596,9 +609,17 @@ public class Main_UI extends javax.swing.JFrame {
         PanelZelda.add(Contador_Nintendo);
         Contador_Nintendo.setBounds(12, 205, 140, 52);
 
+        Ver_Nintendo.setBackground(new java.awt.Color(153, 0, 0));
+        Ver_Nintendo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Ver_Nintendo.setForeground(new java.awt.Color(255, 255, 255));
         Ver_Nintendo.setText("Ver Ganadores");
+        Ver_Nintendo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_NintendoActionPerformed(evt);
+            }
+        });
         PanelZelda.add(Ver_Nintendo);
-        Ver_Nintendo.setBounds(208, 225, 108, 31);
+        Ver_Nintendo.setBounds(163, 225, 140, 31);
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GIFs/nintendo-gifs.gif"))); // NOI18N
         jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -618,10 +639,43 @@ public class Main_UI extends javax.swing.JFrame {
 
     private void SetTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetTimeActionPerformed
         // TODO add your handling code here:
-        int dur = (Integer.parseInt(this.DuracionDiaTxt.getText()));
-        this.procesor.setDur(dur);
-        
+    try {
+            int dur = Integer.parseInt(this.DuracionDiaTxt.getText());
+            if (dur < 0) {
+                // Mostrar un mensaje de error si el número es negativo
+                JOptionPane.showMessageDialog(this, "Por favor ingrese un número entero no negativo.");
+            } else {
+                this.procesor.setDur(dur);
+            }
+        } catch (NumberFormatException e) {
+            // Mostrar un mensaje de error si el texto no es un entero
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número entero válido.");
+        }
+
     }//GEN-LAST:event_SetTimeActionPerformed
+
+    private void Ver_NintendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_NintendoActionPerformed
+
+        if (Integer.parseInt(this.Contador_Capcom.getText()) == 0 || Integer.parseInt(this.Contador_Nintendo.getText()) == 0){
+         JOptionPane.showMessageDialog(this, "No se pueden mostrar las listas porque todavia no hay ganadores");
+        }else{
+        this.ganadoresUI.setVisible(true);
+        this.ganadoresUI.getListSF().setText(this.procesor.winnerListSF.printList());
+        this.ganadoresUI.getListZelda().setText(this.procesor.winnerListZelda.printList());
+        }
+    }//GEN-LAST:event_Ver_NintendoActionPerformed
+
+    private void Ver_CapcomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_CapcomActionPerformed
+        // TODO add your handling code here:
+        
+        if (Integer.parseInt(this.Contador_Capcom.getText()) == 0 || Integer.parseInt(this.Contador_Nintendo.getText()) == 0){
+         JOptionPane.showMessageDialog(this, "No se pueden mostrar las listas porque todavia no hay ganadores");
+        }else{
+        this.ganadoresUI.setVisible(true);
+        this.ganadoresUI.getListSF().setText(this.procesor.winnerListSF.printList());
+        this.ganadoresUI.getListZelda().setText(this.procesor.winnerListZelda.printList());
+        }
+    }//GEN-LAST:event_Ver_CapcomActionPerformed
 
     /**
      * @param args the command line arguments

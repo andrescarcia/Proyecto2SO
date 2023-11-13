@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package MainClasses;
+import com.mycompany.mavenproject1.Ganadores_UI;
 import com.mycompany.mavenproject1.Main_UI;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
@@ -25,14 +26,17 @@ public class AI extends Thread{
     private int zeWins;
     private String currentState;
     private LinkList winnersList;
+    public LinkList winnerListSF;
+    public LinkList winnerListZelda;
     private Semaphore mutex;
     private int roundCount;
     private  int durSeg;
     
 
     private Main_UI mainUI;
+    private Ganadores_UI ganadoresUI;
 
-    public AI(Semaphore m, LinkList winnersList, Main_UI mainUI) {
+    public AI(Semaphore m, LinkList winnersList,LinkList winnerListSF, LinkList winnerListZelda, Main_UI mainUI,Ganadores_UI ganadoresUI ) {
         this.streetCharacter = null;
         this.zeldaCharacter = null;
         this.fighter1 = null;
@@ -42,9 +46,12 @@ public class AI extends Thread{
         this.sfWins = 0;
         this.zeWins = 0;
         this.winnersList = winnersList;
+        this.winnerListSF = winnerListSF;
+        this.winnerListZelda = winnerListZelda; 
         this.mutex = m;
         this.roundCount = 0;
         this.mainUI = mainUI;
+        this.ganadoresUI = ganadoresUI;
         this.durSeg = 100;
     }
 
@@ -150,6 +157,8 @@ public class AI extends Thread{
         
         //System.out.println("Gana " + this.winner.getName() + "\n");
         this.winnersList.insertEnd(new Node(this.winner));
+       
+        setWinnersUI();
         checkWinner();
         this.winner = null;
     }
@@ -179,16 +188,31 @@ public class AI extends Thread{
             return this.zeldaCharacter;
         }
     }
+    
+    public void setWinnersUI(){
+        this.ganadoresUI.getListSF().setText(winnerListSF.printList());
+        this.ganadoresUI.getListZelda().setText(winnerListZelda.printList());
+}
 
     public void checkWinner() {
 
         if (this.winner == this.streetCharacter) {
             this.sfWins += 1;
             this.mainUI.getStreetWin().setText(Integer.toString(this.sfWins));
+            
+        // Concatenar el nombre y el ID del ganador y agregarlo a la lista correspondiente
+        String winnerInfo = this.winner.getName() + " ID: " + this.winner.getId();
+        winnerListSF.insertEnd(new Node(winnerInfo));
+         setWinnersUI();
 
         } else {
             this.zeWins += 1;
             this.mainUI.getZeldaWin().setText(Integer.toString(this.zeWins));
+            
+        // Concatenar el nombre y el ID del ganador y agregarlo a la lista correspondiente
+        String winnerInfo = this.winner.getName() + " ID: " + this.winner.getId();
+        winnerListZelda.insertEnd(new Node(winnerInfo));
+         setWinnersUI();
         }
 
     }
