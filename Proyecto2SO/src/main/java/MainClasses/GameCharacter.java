@@ -251,6 +251,7 @@ public class GameCharacter {
             case "Sonic":
                 this.agility = 350;
                 this.skill = this.skill = random.nextInt(10 - 5) + 5;
+                break;
             
             /**
              * Pikachu tiene una vida mas concistente que los demas personajes debido a
@@ -258,7 +259,7 @@ public class GameCharacter {
              */
             case "Pikachu":
                 this.health = random.nextInt(1200 - 900) + 900;
-                this.agility = random.nextInt(300 - 250);
+                this.agility = random.nextInt(300 - 250) + 250;
                 break;
         }
        
